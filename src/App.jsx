@@ -4,7 +4,7 @@ import SwipeableViews from 'react-swipeable-views'
 class App extends Component {
   constructor( props ) {
 
-    
+
     super( props )
 
     this.state = {
@@ -31,9 +31,9 @@ class App extends Component {
           </ul>
         </nav>
         <SwipeableViews enableMouseEvents index={this.state.currentPage} onChangeIndex={this.currentPage}>
-          <div className="slide slide1">slide n°1</div>
-          <div className="slide slide2">slide n°2</div>
-          <div className="slide slide3">slide n°3</div>
+          <section className="slide slide1">slide n°1</section>
+          <section className="slide slide2">slide n°2</section>
+          <section className="slide slide3">slide n°3</section>
         </SwipeableViews>
       </>
 
