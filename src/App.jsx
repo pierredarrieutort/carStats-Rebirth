@@ -13,9 +13,11 @@ export default class App extends Component {
     this.state = {
       currentPage: 0
     }
+
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange = el => this.setState( { currentPage: el.target.value } )
+  handleChange = el => { this.setState( { currentPage: el.target.value } ); console.log( el.value ) }
   currentPage = i => this.setState( { currentPage: i } )
 
   render() {
@@ -33,7 +35,7 @@ export default class App extends Component {
           <section className="pageWrapper page3"><Palmares /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
-        <Menu />
+        <Menu value={this.value} onChange={this.handleChange} />
       </>
     )
   }

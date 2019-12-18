@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -9,18 +9,14 @@ import EqualizerIcon from '@material-ui/icons/Equalizer'
 import NavigationIcon from '@material-ui/icons/Navigation'
 
 
-export default function Menu() {
-    const [value, setValue] = React.useState( 0 )
-
+export default function Menu( props ) {
+    const [value, setValue] = useState( '0' )
     return (
-        <BottomNavigation
-            value={value}
-            onChange={( event, newValue ) => { setValue( newValue ) }}
-            showLabels>
-            <BottomNavigationAction label="Navigation" icon={<NavigationIcon />} />
-            <BottomNavigationAction label="Statistiques" icon={<EqualizerIcon />} />
-            <BottomNavigationAction label="Palmarès" icon={<GradeIcon />} />
-            <BottomNavigationAction label="Paramètres" icon={<SettingsIcon />} />
+        <BottomNavigation onChange={( ev, newVal ) => { setValue( newVal ) }} value={props.value} showLabels >
+            <BottomNavigationAction value='0' label="Navigation" icon={<NavigationIcon />} />
+            <BottomNavigationAction value='1' label="Statistiques" icon={<EqualizerIcon />} />
+            <BottomNavigationAction value='2' label="Palmarès" icon={<GradeIcon />} />
+            <BottomNavigationAction value='3' label="Paramètres" icon={<SettingsIcon />} />
         </BottomNavigation>
     )
 }
