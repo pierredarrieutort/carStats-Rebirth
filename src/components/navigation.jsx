@@ -20,7 +20,7 @@ export default class Navigation extends Component {
                         </div>
                     </div>
                     <div className="speedWrap">
-                        <svg id="speedGaugeSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275.732 243.695">
+                        {/* <svg id="speedGaugeSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275.732 243.695">
                             <g id="gaugeTicksWrapper" transform="translate(-49.905 -167.069)">
                                 <line className="a" x1="13.063" y2="15.283" transform="translate(99.169 393.31)" />
                                 <line className="a" x1="14.202" y2="14.191" transform="translate(91.308 387.13)" />
@@ -86,7 +86,7 @@ export default class Navigation extends Component {
                                 <line className="a" x1="14.193" y1="14.2" transform="translate(269.981 387.182)" />
                                 <line className="a" x2="13.053" y2="15.291" transform="translate(263.256 393.358)" />
                             </g>
-                        </svg>
+                        </svg> */}
                         <div className="readoutWrapper">
                             <div id="readout">-</div>
                         </div>

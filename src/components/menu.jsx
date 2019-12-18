@@ -1,41 +1,27 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import React from 'react'
 
-const useStyles = makeStyles( {
-    root: {
-        width: 500,
-    },
-} );
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
+
+import SettingsIcon from '@material-ui/icons/Settings'
+import GradeIcon from '@material-ui/icons/Grade'
+import EqualizerIcon from '@material-ui/icons/Equalizer'
+import NavigationIcon from '@material-ui/icons/Navigation'
+
 
 export default function Menu() {
-    const classes = useStyles();
-    const [value, setValue] = React.useState( 0 );
+    const [value, setValue] = React.useState( 0 )
 
     return (
-        <BottomNavigation value={value}
-            onChange={( event, newValue ) => { setValue( newValue ); }}
-            showLabels className={classes.root}>
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigation
+            value={value}
+            onChange={( event, newValue ) => { setValue( newValue ) }}
+            showLabels>
+            <BottomNavigationAction label="Navigation" icon={<NavigationIcon />} />
+            <BottomNavigationAction label="Statistiques" icon={<EqualizerIcon />} />
+            <BottomNavigationAction label="Palmarès" icon={<GradeIcon />} />
+            <BottomNavigationAction label="Paramètres" icon={<SettingsIcon />} />
         </BottomNavigation>
-    );
+    )
 }
 
-// export default class extends Component {  
-//     render() {
-//       return (
-//         <>
-
-//         </>
-//       )
-//     }
-//   }
-
-
-//? ANCHOR COMMENT CHANGER LE STATE OU LE HOOK DE APP VIA onChange au dessus.
