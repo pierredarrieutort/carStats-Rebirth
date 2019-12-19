@@ -14,10 +14,10 @@ export default class App extends Component {
       currentPage: 0
     }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind( this )
   }
 
-  handleChange = el => { this.setState( { currentPage: el.target.value } ); console.log( el.value ) }
+  handleChange = el => { this.setState( { currentPage: el } ); console.log( el ) }
   currentPage = i => this.setState( { currentPage: i } )
 
   render() {
@@ -29,13 +29,13 @@ export default class App extends Component {
           <li onClick={this.handleChange} value='2'>Palmarès</li>
           <li onClick={this.handleChange} value='3'>Paramètres</li>
         </ul>
-        <SwipeableViews enableMouseEvents index={this.state.currentPage} onChangeIndex={this.currentPage}>
+        <SwipeableViews enableMouseEvents index={parseInt( this.state.currentPage )} onChangeIndex={this.currentPage}>
           <section className="pageWrapper page1"><Navigation /></section>
           <section className="pageWrapper page2"><Statistiques /></section>
           <section className="pageWrapper page3"><Palmares /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
-        <Menu value={this.value} onChange={this.handleChange} />
+        <Menu value={this.value} pages={this.handleChange} />
       </>
     )
   }

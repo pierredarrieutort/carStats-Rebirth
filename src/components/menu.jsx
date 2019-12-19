@@ -10,9 +10,8 @@ import NavigationIcon from '@material-ui/icons/Navigation'
 
 
 export default function Menu( props ) {
-    const [value, setValue] = useState( '0' )
     return (
-        <BottomNavigation onChange={( ev, newVal ) => { setValue( newVal ) }} value={props.value} showLabels >
+        <BottomNavigation onChange={( e, event ) => { console.log( event ); props.pages( event ) }} value={parseInt( props.value )} showLabels >
             <BottomNavigationAction value='0' label="Navigation" icon={<NavigationIcon />} />
             <BottomNavigationAction value='1' label="Statistiques" icon={<EqualizerIcon />} />
             <BottomNavigationAction value='2' label="Palmarès" icon={<GradeIcon />} />
