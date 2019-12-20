@@ -1,44 +1,36 @@
 import React, { Component } from 'react'
 import SwipeableViews from 'react-swipeable-views'
+import Navigation from './components/navigation'
+import Statistiques from './components/statistiques'
+import Palmares from './components/palmares'
+import Parametres from './components/parametres'
+import Menu from './components/menu'
 
-class App extends Component {
+export default class App extends Component {
   constructor( props ) {
-
-
     super( props )
 
     this.state = {
-      currentPage: 1
+      currentPage: '0'
     }
-
   }
 
-
-  handleChange = el => this.setState( { currentPage: el.target.value } )
-
-  currentPage = i => this.setState( { currentPage: i } )
-
+  pageChange = i => this.setState( { currentPage: String( i ) } )
 
   render() {
     return (
-
       <>
-        <nav>
-          <ul>
-            <li onClick={this.handleChange} value='0'>slider1</li>
-            <li onClick={this.handleChange} value='1'>slider2</li>
-            <li onClick={this.handleChange} value='2'>slider3</li>
-          </ul>
-        </nav>
-        <SwipeableViews enableMouseEvents index={this.state.currentPage} onChangeIndex={this.currentPage}>
-          <section className="slide slide1">slide n°1</section>
-          <section className="slide slide2">slide n°2</section>
-          <section className="slide slide3">slide n°3</section>
+        <SwipeableViews
+          enableMouseEvents
+          index={parseInt( this.state.currentPage )}
+          onChangeIndex={this.pageChange}>
+          <section className="pageWrapper page1"><Navigation /></section>
+          <section className="pageWrapper page2"><Statistiques /></section>
+          <section className="pageWrapper page3"><Palmares /></section>
+          <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
+        <Menu value={this.state.currentPage} pages={this.pageChange} />
       </>
-
     )
   }
 }
-
-export default App
