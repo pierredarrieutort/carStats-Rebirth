@@ -4,22 +4,27 @@ import Navigation from './components/navigation'
 import Statistiques from './components/statistiques'
 import Palmares from './components/palmares'
 import Parametres from './components/parametres'
-import Menu from './components/menu'
+import {Menu, Titre} from './components/menu'
 
 export default class App extends Component {
   constructor( props ) {
     super( props )
 
     this.state = {
-      currentPage: '0'
+      currentPage: '0',
+      currentPageName: ''
     }
   }
 
-  pageChange = i => this.setState( { currentPage: String( i ) } )
+  pageChange = i => this.setState( { 
+    currentPage: String( i ),
+    currentPageName : i
+  } )
 
   render() {
     return (
       <>
+      <Titre currentPageName={this.state.currentPageName} />
         <SwipeableViews
           enableMouseEvents
           index={parseInt( this.state.currentPage )}
