@@ -6,7 +6,6 @@ export default class Palmares extends Component {
         return (
             <>
                 <h1>Palmarès</h1>
-                <div id="contenu">
                     <div id='distances' className="palma">
                         <h2>Les plus longues distances</h2>
                         <ul></ul>
@@ -19,8 +18,6 @@ export default class Palmares extends Component {
                         <h2>Les plus longs trajets</h2>
                         <ul></ul>
                     </div>
-                </div>
-
             </>
         )
     }

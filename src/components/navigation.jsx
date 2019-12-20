@@ -6,7 +6,6 @@ export default class Navigation extends Component {
         return (
             <>
                 <h1>Navigation</h1>
-                <div id="contenu">
                     <div className="prettyWrap">
                         <div id="signalWrapper">
                             {/* <img src={require( 'images/signal-satellite.svg' )} alt="Signal-GPS" /> */}
@@ -112,7 +111,6 @@ export default class Navigation extends Component {
                             <span className="durationIcon"></span><span id="duree">- m</span>
                         </div>
                     </div>
-                </div>
             </>
         )
     }

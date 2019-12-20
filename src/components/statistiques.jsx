@@ -6,9 +6,7 @@ export default class Statistiques extends Component {
     return (
       <>
       <h1>Statistiques</h1>
-      <div id="contenu">
         <div id="statsWrapper"></div>
-      </div>
       </>
     )
   }

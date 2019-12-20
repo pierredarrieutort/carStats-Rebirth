@@ -6,7 +6,6 @@ export default class Parametres extends Component {
         return (
             <>
                 <h1>Paramètres</h1>
-                <div id="contenu">
                     <ul id="parametres">
                         {/* <li onClick="nightToggle()"><label for="nightToggle">Mode Clair</label><input type="checkbox" id="nightToggle"
                             className="offscreen" /><label for="nightToggle" className="switch"></label>
@@ -53,8 +52,6 @@ export default class Parametres extends Component {
                             <div className="doButton"></div>
                         </li> */}
                     </ul>
-                </div>
-
             </>
         )
     }
