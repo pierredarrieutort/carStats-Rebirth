@@ -4,10 +4,8 @@ export default class Parametres extends Component {
 
     render() {
         return (
-            <>
-                <h1>Paramètres</h1>
-                    <ul id="parametres">
-                        {/* <li onClick="nightToggle()"><label for="nightToggle">Mode Clair</label><input type="checkbox" id="nightToggle"
+            <ul id="parametres">
+                {/* <li onClick="nightToggle()"><label for="nightToggle">Mode Clair</label><input type="checkbox" id="nightToggle"
                             className="offscreen" /><label for="nightToggle" className="switch"></label>
                         </li>
                         <li onClick="mileToggle()"><label for="mileToggle">Système impérial (Mile)</label><input type="checkbox"
@@ -51,8 +49,7 @@ export default class Parametres extends Component {
                             <div>Modifier mon mot de passe</div>
                             <div className="doButton"></div>
                         </li> */}
-                    </ul>
-            </>
+            </ul>
         )
     }
 }

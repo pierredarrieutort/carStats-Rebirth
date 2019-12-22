@@ -5,21 +5,20 @@ export default class Navigation extends Component {
     render() {
         return (
             <>
-                <h1>Navigation</h1>
-                    <div className="prettyWrap">
-                        <div id="signalWrapper">
-                            {/* <img src={require( 'images/signal-satellite.svg' )} alt="Signal-GPS" /> */}
-                            <div id="gps_Signal" className="q0 q4">
-                                <div className="bar s1"></div>
-                                <div className="bar s2"></div>
-                                <div className="bar s3"></div>
-                                <div className="bar s4"></div>
-                                <div className="bar s5"></div>
-                            </div>
+                <div className="prettyWrap">
+                    <div id="signalWrapper">
+                        {/* <img src={require( 'images/signal-satellite.svg' )} alt="Signal-GPS" /> */}
+                        <div id="gps_Signal" className="q0 q4">
+                            <div className="bar s1"></div>
+                            <div className="bar s2"></div>
+                            <div className="bar s3"></div>
+                            <div className="bar s4"></div>
+                            <div className="bar s5"></div>
                         </div>
                     </div>
-                    <div className="speedWrap">
-                        {/* <svg id="speedGaugeSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275.732 243.695">
+                </div>
+                <div className="speedWrap">
+                    {/* <svg id="speedGaugeSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275.732 243.695">
                             <g id="gaugeTicksWrapper" transform="translate(-49.905 -167.069)">
                                 <line className="a" x1="13.063" y2="15.283" transform="translate(99.169 393.31)" />
                                 <line className="a" x1="14.202" y2="14.191" transform="translate(91.308 387.13)" />
@@ -86,31 +85,31 @@ export default class Navigation extends Component {
                                 <line className="a" x2="13.053" y2="15.291" transform="translate(263.256 393.358)" />
                             </g>
                         </svg> */}
-                        <div className="readoutWrapper">
-                            <div id="readout">-</div>
-                        </div>
-                        <span className="readoutUnit unitWrapper"></span>
-                        <div className="backLegal">
-                            <span id="legal"></span>
-                        </div>
+                    <div className="readoutWrapper">
+                        <div id="readout">-</div>
                     </div>
-                    {/* <button id="start" onClick="starterButton()">&#x1F511; Start</button> */}
-                    <div className="wrapStats">
-                        <div>
-                            <span className="avgIcon"></span><span id="averageSpeed">-</span>&nbsp;<span className="unitWrapper"></span>
-                        </div>
-                        <div>
-                            <span className="maxIcon"></span><span id="maxSpeed">-</span>&nbsp;<span className="unitWrapper"></span>
-                        </div>
+                    <span className="readoutUnit unitWrapper"></span>
+                    <div className="backLegal">
+                        <span id="legal"></span>
                     </div>
-                    <div className="wrapStats">
-                        <div>
-                            <span className="distanceIcon"></span><span id="distance">-</span>&nbsp;<span className="unitDistanceWrapper"></span>
-                        </div>
-                        <div>
-                            <span className="durationIcon"></span><span id="duree">- m</span>
-                        </div>
+                </div>
+                {/* <button id="start" onClick="starterButton()">&#x1F511; Start</button> */}
+                <div className="wrapStats">
+                    <div>
+                        <span className="avgIcon"></span><span id="averageSpeed">-</span>&nbsp;<span className="unitWrapper"></span>
                     </div>
+                    <div>
+                        <span className="maxIcon"></span><span id="maxSpeed">-</span>&nbsp;<span className="unitWrapper"></span>
+                    </div>
+                </div>
+                <div className="wrapStats">
+                    <div>
+                        <span className="distanceIcon"></span><span id="distance">-</span>&nbsp;<span className="unitDistanceWrapper"></span>
+                    </div>
+                    <div>
+                        <span className="durationIcon"></span><span id="duree">- m</span>
+                    </div>
+                </div>
             </>
         )
     }

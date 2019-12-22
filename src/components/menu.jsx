@@ -18,10 +18,10 @@ export function Menu( props ) {
             onChange={( e, value ) => { props.pages( value ) }}
             value={props.value}
             showLabels >
-            <BottomNavigationAction value='0' label="Navigation" icon={<NavigationIcon />} />
-            <BottomNavigationAction value='1' label="Statistiques" icon={<EqualizerIcon />} />
-            <BottomNavigationAction value='2' label="Palmarès" icon={<GradeIcon />} />
-            <BottomNavigationAction value='3' label="Paramètres" icon={<SettingsIcon />} />
+            <BottomNavigationAction value='0' label={props.pagesLabel[0]} icon={<NavigationIcon />} />
+            <BottomNavigationAction value='1' label={props.pagesLabel[1]} icon={<EqualizerIcon />} />
+            <BottomNavigationAction value='2' label={props.pagesLabel[2]} icon={<GradeIcon />} />
+            <BottomNavigationAction value='3' label={props.pagesLabel[3]} icon={<SettingsIcon />} />
         </BottomNavigation>
     )
 }
@@ -30,7 +30,7 @@ export function Titre( props ) {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6" >{props.currentPageName}</Typography>
+                <Typography variant="h1" className="MuiTypography-h6" >{props.currentPageName}</Typography>
             </Toolbar>
         </AppBar>
     )

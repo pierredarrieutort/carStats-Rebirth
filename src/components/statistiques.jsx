@@ -4,10 +4,7 @@ export default class Statistiques extends Component {
 
   render() {
     return (
-      <>
-      <h1>Statistiques</h1>
-        <div id="statsWrapper"></div>
-      </>
+      <div id="statsWrapper"></div>
     )
   }
 }
