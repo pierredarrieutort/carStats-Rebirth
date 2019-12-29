@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { round, multiply } from 'mathjs'
+import { duration } from 'moment'
 
 export default class Palmares extends Component {
 
@@ -19,9 +21,10 @@ export default class Palmares extends Component {
             .then( response => response.json() )
             .then( response => {
                 const
-                    distance = response.byDistance.map( el => `["${el[0]}",${el[1] * 2}]` ),
-                    speed = response.bySpeed.map( el => `["${el[0]}",${el[1] * 2}]` ),
-                    time = response.byTime.map( el => `["${el[0]}",${el[1] * 2}]` )
+                    { speedCoef, distanceCoef } = this.props.params,
+                    distance = response.byDistance.map( el => `["${el[0]}",${round( multiply( el[1], distanceCoef ), 2 )}]` ),
+                    speed = response.bySpeed.map( el => `["${el[0]}",${round( multiply( el[1], speedCoef ), 2 )}]` ),
+                    time = response.byTime.map( el => `["${el[0]}","${duration( parseInt( el[1] ), 'seconds' ).hours() + 'h ' + duration( parseInt( el[1] ), 'seconds' ).minutes() + 'm'}"]` )
                 this.setState( {
                     data: JSON.parse(
                         `{"byDistance":[${distance}],"bySpeed":[${speed}],"byTime":[${time}]}`
@@ -62,8 +65,3 @@ function Treatment( props ) {
         </ul>
     )
 }
-
-
-
-
-        // scripts: initPalmares()

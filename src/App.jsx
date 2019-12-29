@@ -27,7 +27,7 @@ export default class App extends Component {
         'Palmarès',
         'Paramètres'
       ],
-      readoutUnits = {
+      metrics = {
         mph: 2.23694,
         kmh: 3.6,
         mphName: ' mph',
@@ -38,8 +38,8 @@ export default class App extends Component {
         kmName: ' km'
       },
       appOpts = {
-        readoutUnit: readoutUnits.kmh,
-        readoutName: readoutUnits.km,
+        speedCoef: metrics.kmh,
+        distanceCoef: metrics.km,
       }
 
 
@@ -53,7 +53,7 @@ export default class App extends Component {
           onChangeIndex={this.pageChange}>
           <section className="pageWrapper page1"><Navigation /></section>
           <section className="pageWrapper page2"><Statistiques /></section>
-          <section className="pageWrapper page3"><Palmares /></section>
+          <section className="pageWrapper page3"><Palmares params={appOpts} /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
         <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />
