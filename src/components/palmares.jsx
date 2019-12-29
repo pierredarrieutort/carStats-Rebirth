@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { round, multiply } from 'mathjs'
+import { duration } from 'moment'
 
 export default class Palmares extends Component {
 
@@ -7,12 +9,9 @@ export default class Palmares extends Component {
 
         this.state = {
             data: {
-                "byDistance": [
-                    ["Lucas", "72354"], ["Pierre", "57873"], ["Pierre", "39271"], ["Lucas", "36191"], ["Lucas", "30084"], ["Pierre", "24056"], ["Lucas", "22121"], ["Pierre", "16531"], ["Pierre", "11488"], ["Pierre", "10066"]],
-                "bySpeed": [
-                    ["Pierre", "44"], ["Pierre", "43"], ["Pierre", "42"], ["Pierre", "41"], ["Pierre", "35"], ["Pierre", "32"], ["Pierre", "31"], ["Pierre", "25"], ["Lucas", "25"], ["Pierre", "25"]],
-                "byTime": [
-                    ["Lucas", "11341"], ["Lucas", "8568"], ["Pierre", "1205"], ["Pierre", "990"], ["Pierre", "887"], ["Lucas", "782"], ["Pierre", "694"], ["Pierre", "692"], ["Lucas", "624"], ["Pierre", "558"]]
+                "byDistance": [],
+                "bySpeed": [],
+                "byTime": []
             }
         }
     }
@@ -20,8 +19,18 @@ export default class Palmares extends Component {
     componentDidMount() {
         fetch( 'https://cors-anywhere.herokuapp.com/https://pierredarrieutort.fr/carstats/server/ajax/palmares.php' )
             .then( response => response.json() )
-        // .then( response => this.setState( { data: response } ) )
-        // .then( this.setState( { data: { byDistance: { username: "Lucas", score: 72354 } } } ) )
+            .then( response => {
+                const
+                    { speedCoef, distanceCoef } = this.props.params,
+                    distance = response.byDistance.map( el => `["${el[0]}",${round( multiply( el[1], distanceCoef ), 2 )}]` ),
+                    speed = response.bySpeed.map( el => `["${el[0]}",${round( multiply( el[1], speedCoef ), 2 )}]` ),
+                    time = response.byTime.map( el => `["${el[0]}","${duration( parseInt( el[1] ), 'seconds' ).hours() + 'h ' + duration( parseInt( el[1] ), 'seconds' ).minutes() + 'm'}"]` )
+                this.setState( {
+                    data: JSON.parse(
+                        `{"byDistance":[${distance}],"bySpeed":[${speed}],"byTime":[${time}]}`
+                    )
+                } )
+            } )
     }
 
 
@@ -56,8 +65,3 @@ function Treatment( props ) {
         </ul>
     )
 }
-
-
-
-
-        // scripts: initPalmares()

@@ -20,23 +20,40 @@ export default class App extends Component {
 
   render() {
 
-    const pagesName = [
-      'Navigation',
-      'Statistiques',
-      'Palmarès',
-      'Paramètres'
-    ]
+    const
+      pagesName = [
+        'Navigation',
+        'Statistiques',
+        'Palmarès',
+        'Paramètres'
+      ],
+      metrics = {
+        mph: 2.23694,
+        kmh: 3.6,
+        mphName: ' mph',
+        kmhName: ' km/h',
+        mi: 0.000621371,
+        km: 0.001,
+        miName: ' mi',
+        kmName: ' km'
+      },
+      appOpts = {
+        speedCoef: metrics.kmh,
+        distanceCoef: metrics.km,
+      }
+
+
 
     return (
       <>
-      <Titre currentPageName={pagesName[this.state.currentPage]} />
+        <Titre currentPageName={pagesName[this.state.currentPage]} />
         <SwipeableViews
           enableMouseEvents
           index={parseInt( this.state.currentPage )}
           onChangeIndex={this.pageChange}>
           <section className="pageWrapper page1"><Navigation /></section>
           <section className="pageWrapper page2"><Statistiques /></section>
-          <section className="pageWrapper page3"><Palmares /></section>
+          <section className="pageWrapper page3"><Palmares params={appOpts} /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
         <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />
