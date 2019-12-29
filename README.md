@@ -2,7 +2,7 @@
 
   
 
-- [Check the last version three of the project](https://gitlab.com/Pierre_Darrieutort/carstats/tree/beta)<br>
+- [Check the last version three of the project (before Rebirth)](https://gitlab.com/Pierre_Darrieutort/carstats/tree/beta)<br>
 
 - [Watch the live version of the project](https://gitlab.com/Pierre_Darrieutort/carstats/tree/beta)
 
