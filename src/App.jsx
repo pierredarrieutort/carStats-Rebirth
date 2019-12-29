@@ -4,9 +4,10 @@ import Navigation from './components/navigation'
 import Statistiques from './components/statistiques'
 import Palmares from './components/palmares'
 import Parametres from './components/parametres'
-import Menu from './components/menu'
+import { Menu, Titre } from './components/menu'
 
 export default class App extends Component {
+
   constructor( props ) {
     super( props )
 
@@ -18,8 +19,17 @@ export default class App extends Component {
   pageChange = i => this.setState( { currentPage: String( i ) } )
 
   render() {
+
+    const pagesName = [
+      'Navigation',
+      'Statistiques',
+      'Palmarès',
+      'Paramètres'
+    ]
+
     return (
       <>
+      <Titre currentPageName={pagesName[this.state.currentPage]} />
         <SwipeableViews
           enableMouseEvents
           index={parseInt( this.state.currentPage )}
@@ -29,7 +39,7 @@ export default class App extends Component {
           <section className="pageWrapper page3"><Palmares /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
-        <Menu value={this.state.currentPage} pages={this.pageChange} />
+        <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />
       </>
     )
   }

@@ -1,13 +1,27 @@
 body
     font-family: 'Roboto', sans-serif
-.page1
-    background-color: #FEA900
+    user-select: none
+    .page1
+        background-color: #FEA900
 
-.page2
-    background-color: #B3DC4A
+    .page2
+        background-color: #B3DC4A
 
-.page3
-    background-color: #6AC0FF
+    .page3
+        background-color: #6AC0FF
 
-.page4
-    background-color: #EAC090
+    .page4
+        background-color: #EAC090
+    #root
+        display: flex
+        justify-content: space-between
+        flex-direction: column
+        height: 100vh
+        > .MuiBottomNavigation-root
+            min-height: 56px
+        > div:first-of-type
+            height: 100%
+            > div
+                height: 100%
+                .pageWrapper
+                    height: 100%
