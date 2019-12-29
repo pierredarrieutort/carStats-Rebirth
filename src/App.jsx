@@ -20,16 +20,33 @@ export default class App extends Component {
 
   render() {
 
-    const pagesName = [
-      'Navigation',
-      'Statistiques',
-      'Palmarès',
-      'Paramètres'
-    ]
+    const
+      pagesName = [
+        'Navigation',
+        'Statistiques',
+        'Palmarès',
+        'Paramètres'
+      ],
+      readoutUnits = {
+        mph: 2.23694,
+        kmh: 3.6,
+        mphName: ' mph',
+        kmhName: ' km/h',
+        mi: 0.000621371,
+        km: 0.001,
+        miName: ' mi',
+        kmName: ' km'
+      },
+      appOpts = {
+        readoutUnit: readoutUnits.kmh,
+        readoutName: readoutUnits.km,
+      }
+
+
 
     return (
       <>
-      <Titre currentPageName={pagesName[this.state.currentPage]} />
+        <Titre currentPageName={pagesName[this.state.currentPage]} />
         <SwipeableViews
           enableMouseEvents
           index={parseInt( this.state.currentPage )}
