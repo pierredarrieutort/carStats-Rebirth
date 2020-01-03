@@ -5,7 +5,6 @@ import Statistiques from './components/main-views/statistiques'
 import Palmares from './components/main-views/palmares'
 import Parametres from './components/main-views/parametres'
 import { Menu, Titre } from './components/menu'
-import SignIn from './components/login-views/signin'
 
 export default class App extends Component {
 
@@ -56,7 +55,6 @@ export default class App extends Component {
           <section className="pageWrapper page2"><Statistiques /></section>
           <section className="pageWrapper page3"><Palmares params={appOpts} /></section>
           <section className="pageWrapper page4"><Parametres /></section>
-          <section className="pageWrapper page5"><SignIn /></section>
         </SwipeableViews>
         <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />
       </>
