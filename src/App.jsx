@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import Navigation from './components/navigation'
-import Statistiques from './components/statistiques'
-import Palmares from './components/palmares'
-import Parametres from './components/parametres'
+import Navigation from './components/main-views/navigation'
+import Statistiques from './components/main-views/statistiques'
+import Palmares from './components/main-views/palmares'
+import Parametres from './components/main-views/parametres'
 import { Menu, Titre } from './components/menu'
 
 export default class App extends Component {

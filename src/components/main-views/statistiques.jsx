@@ -10,4 +10,4 @@ export default class Statistiques extends Component {
 }
 
 
-// scripts: verifyConnexion(page2), initLang()
+// TODO scripts: verifyConnexion(page2), initLang()
