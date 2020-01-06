@@ -12,7 +12,7 @@ export default class App extends Component {
     super( props )
 
     this.state = {
-      currentPage: '0'
+      currentPage: '1'
     }
   }
 
@@ -52,8 +52,8 @@ export default class App extends Component {
           index={parseInt( this.state.currentPage )}
           onChangeIndex={this.pageChange}>
           <section className="pageWrapper page1"><Navigation /></section>
-          <section className="pageWrapper page2"><Statistiques /></section>
-          <section className="pageWrapper page3"><Palmares params={appOpts} /></section>
+          <section className="pageWrapper page2"><Statistiques metrics={appOpts} /></section>
+          <section className="pageWrapper page3"><Palmares metrics={appOpts} /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
         <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />

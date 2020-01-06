@@ -21,7 +21,7 @@ export default class Palmares extends Component {
             .then( response => response.json() )
             .then( response => {
                 const
-                    { speedCoef, distanceCoef } = this.props.params,
+                    { speedCoef, distanceCoef } = this.props.metrics,
                     distance = response.byDistance.map( el => `["${el[0]}",${round( multiply( el[1], distanceCoef ), 2 )}]` ),
                     speed = response.bySpeed.map( el => `["${el[0]}",${round( multiply( el[1], speedCoef ), 2 )}]` ),
                     time = response.byTime.map( el => `["${el[0]}","${duration( parseInt( el[1] ), 'seconds' ).hours() + 'h ' + duration( parseInt( el[1] ), 'seconds' ).minutes() + 'm'}"]` )
