@@ -4,7 +4,6 @@ body
     .page1
         background-color: #FEA900
     .page2
-        background-color: #fff
         display: grid
         .MuiSvgIcon-root
             font-size: 1em
@@ -42,7 +41,19 @@ body
                     hr
                         display: none
     .page3
-        background-color: #6AC0FF
+        display: flex
+        flex-direction: column
+        justify-content: center
+        color: #444
+        h2
+            padding: 7% 2% 0
+        ul
+            li
+                display: flex
+                justify-content: space-between
+                padding: .2% 4%
+                &:first-child
+                    color: #ffa500
     .page4
         background-color: #EAC090
     #root

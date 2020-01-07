@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { round, multiply } from 'mathjs'
 import { duration } from 'moment'
+import { Typography } from '@material-ui/core'
 
 export default class Palmares extends Component {
 
@@ -39,15 +40,15 @@ export default class Palmares extends Component {
         return (
             <>
                 <div id='distances' className="palma">
-                    <h2>Les plus longues distances</h2>
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus longues distances</Typography>
                     <Treatment data={this.state.data.byDistance} unit={distanceUnit} />
                 </div>
                 <div id='vitesses' className="palma">
-                    <h2>Les plus grandes vitesses</h2>
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus grandes vitesses</Typography>
                     <Treatment data={this.state.data.bySpeed} unit={speedUnit} />
                 </div>
                 <div id='durees' className="palma">
-                    <h2>Les plus longs trajets</h2>
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus longs trajets</Typography>
                     <Treatment data={this.state.data.byTime} />
                 </div>
             </>
@@ -60,7 +61,14 @@ function Treatment( props ) {
     return (
         <ul>
             {
-                props.data.map( ( el, index ) => { return <li key={index} >{el[0]} : {el[1]}{props.unit}</li> } )
+                props.data.map( ( el, index ) => {
+                    return (
+                        <li key={index} >
+                            <span>{el[0]}</span>
+                            <span>{props.unit ? el[1] + props.unit : el[1]}</span>
+                        </li>
+                    )
+                } )
             }
         </ul>
     )
