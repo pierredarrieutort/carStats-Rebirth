@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import Navigation from './components/navigation'
-import Statistiques from './components/statistiques'
-import Palmares from './components/palmares'
-import Parametres from './components/parametres'
+import Navigation from './components/main-views/navigation'
+import Statistiques from './components/main-views/statistiques'
+import Palmares from './components/main-views/palmares'
+import Parametres from './components/main-views/parametres'
 import { Menu, Titre } from './components/menu'
 
 export default class App extends Component {
@@ -12,7 +12,7 @@ export default class App extends Component {
     super( props )
 
     this.state = {
-      currentPage: '0'
+      currentPage: '2'
     }
   }
 
@@ -40,6 +40,8 @@ export default class App extends Component {
       appOpts = {
         speedCoef: metrics.kmh,
         distanceCoef: metrics.km,
+        speedUnit: metrics.kmhName,
+        distanceUnit: metrics.kmName
       }
 
 
@@ -52,8 +54,8 @@ export default class App extends Component {
           index={parseInt( this.state.currentPage )}
           onChangeIndex={this.pageChange}>
           <section className="pageWrapper page1"><Navigation /></section>
-          <section className="pageWrapper page2"><Statistiques /></section>
-          <section className="pageWrapper page3"><Palmares params={appOpts} /></section>
+          <section className="pageWrapper page2"><Statistiques metrics={appOpts} /></section>
+          <section className="pageWrapper page3"><Palmares metrics={appOpts} /></section>
           <section className="pageWrapper page4"><Parametres /></section>
         </SwipeableViews>
         <Menu value={this.state.currentPage} pages={this.pageChange} pagesLabel={pagesName} />

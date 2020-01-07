@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { round, multiply } from 'mathjs'
 import { duration } from 'moment'
+import { Typography } from '@material-ui/core'
 
 export default class Palmares extends Component {
 
@@ -21,7 +22,7 @@ export default class Palmares extends Component {
             .then( response => response.json() )
             .then( response => {
                 const
-                    { speedCoef, distanceCoef } = this.props.params,
+                    { speedCoef, distanceCoef } = this.props.metrics,
                     distance = response.byDistance.map( el => `["${el[0]}",${round( multiply( el[1], distanceCoef ), 2 )}]` ),
                     speed = response.bySpeed.map( el => `["${el[0]}",${round( multiply( el[1], speedCoef ), 2 )}]` ),
                     time = response.byTime.map( el => `["${el[0]}","${duration( parseInt( el[1] ), 'seconds' ).hours() + 'h ' + duration( parseInt( el[1] ), 'seconds' ).minutes() + 'm'}"]` )
@@ -35,18 +36,19 @@ export default class Palmares extends Component {
 
 
     render() {
+        const { speedUnit, distanceUnit } = this.props.metrics
         return (
             <>
                 <div id='distances' className="palma">
-                    <h2>Les plus longues distances</h2>
-                    <Treatment data={this.state.data.byDistance} />
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus longues distances</Typography>
+                    <Treatment data={this.state.data.byDistance} unit={distanceUnit} />
                 </div>
                 <div id='vitesses' className="palma">
-                    <h2>Les plus grandes vitesses</h2>
-                    <Treatment data={this.state.data.bySpeed} />
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus grandes vitesses</Typography>
+                    <Treatment data={this.state.data.bySpeed} unit={speedUnit} />
                 </div>
                 <div id='durees' className="palma">
-                    <h2>Les plus longs trajets</h2>
+                    <Typography align='center' variant="h2" className="MuiTypography-h6" >Les plus longs trajets</Typography>
                     <Treatment data={this.state.data.byTime} />
                 </div>
             </>
@@ -56,11 +58,17 @@ export default class Palmares extends Component {
 
 
 function Treatment( props ) {
-
     return (
         <ul>
             {
-                props.data.map( ( el, index ) => { return <li key={index} >{el[0]} : {el[1]}</li> } )
+                props.data.map( ( el, index ) => {
+                    return (
+                        <li key={index} >
+                            <span>{el[0]}</span>
+                            <span>{props.unit ? el[1] + props.unit : el[1]}</span>
+                        </li>
+                    )
+                } )
             }
         </ul>
     )
