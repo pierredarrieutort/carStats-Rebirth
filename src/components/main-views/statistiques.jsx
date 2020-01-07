@@ -24,7 +24,7 @@ export default class Statistiques extends Component {
         headers: {
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
-        body: "userId=24", // 31
+        body: "userId=31", // 24
         method: "POST"
       }
     )
@@ -66,9 +66,6 @@ export default class Statistiques extends Component {
                 departHour
               ]
             } )
-
-            // if ( startCity == endCity || startCity == "" ) document.querySelector( '.trajetWrap_' + i + ' .from' ).style.opacity = 0
-            // if ( endCity == "" ) document.querySelector( '.trajetWrap_' + i + ' .to' ).style.opacity = 0
           } )
         } else {
           this.setState( {
@@ -112,9 +109,9 @@ export default class Statistiques extends Component {
                           <ListItemText primary={departDate} secondary={departHour} />
                         </div>
                         <div className="cities">
-                          <div className="from">
+                          <div className="from" style={startCity === endCity || startCity === "" ? { display: 'none' } : {}} >
                             <RoomIcon /><span>&nbsp;De :&nbsp;</span>{startCity}</div>
-                          <div className="to">
+                          <div className="to" style={endCity === "" ? { display: 'none' } : {}} >
                             <RoomIcon /><span>&nbsp;À :&nbsp;</span>{endCity}</div>
                         </div>
                       </div>
@@ -145,7 +142,7 @@ export default class Statistiques extends Component {
                 )
               } )
             }
-          </List>
+          </List >
         )
       } else { console.log( 'Erreur traitement statistiques' ) }
     } else { return <i> {this.state.data} </i> }
