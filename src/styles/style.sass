@@ -8,32 +8,35 @@ body
         display: grid
         ul
             padding: 0
-            .trajetWrap
-                display: grid
-                grid-template-columns: 75% 25%
-                padding-top: .5em
-                padding-bottom: .5em
-                > div
-                    padding: .5em 0
-                    height: 100%
-                .infos
-                    .date
-                        div:first-child
-                            margin-top: 0
-                .stats
-                    display: flex
-                    flex-direction: column
-                    justify-content: space-between
-                    text-align: right
-                    justify-self: flex-end
-                    white-space: nowrap
+            li
+                display: inline-block
+                padding: 0
+                .trajetWrap
+                    display: grid
+                    grid-template-columns: 75% 25%
+                    padding: .5em 16px
                     > div
-                        display: grid
-                        grid-template-columns: repeat(2, 1fr)
-                        > img
-                            width: 1.2em
-            hr:last-of-type
-                display: none
+                        padding: .5em 0
+                        height: 100%
+                    .infos
+                        .date
+                            div:first-child
+                                margin-top: 0
+                    .stats
+                        display: flex
+                        flex-direction: column
+                        justify-content: space-between
+                        text-align: right
+                        justify-self: flex-end
+                        white-space: nowrap
+                        > div
+                            display: grid
+                            grid-template-columns: repeat(2, 1fr)
+                            > img
+                                width: 1.2em
+                &:last-of-type
+                    hr
+                        display: none
     .page3
         background-color: #6AC0FF
     .page4

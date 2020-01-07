@@ -88,7 +88,7 @@ export default class Statistiques extends Component {
       }
 
       return (
-        <ul>
+        <List>
           {
             travels.map( ( el, index ) => {
               const
@@ -96,14 +96,15 @@ export default class Statistiques extends Component {
                 avgSpeed = el[1],
                 distance = el[2],
                 duree = el[3],
+                // depart = el[4],
                 startCity = el[5],
                 endCity = el[6],
                 departDate = el[7],
                 departHour = el[8]
 
               return (
-                <>
-                  <ul key={index} className="trajetWrap">
+                <ListItem key={index}>
+                  <div className="trajetWrap">
                     <div className="infos">
                       <div className="date">
                         <ListItemText primary={departDate} secondary={departHour} />
@@ -136,19 +137,16 @@ export default class Statistiques extends Component {
                         <div className="valueStat">{duree}</div>
                       </div>
                     </div>
-                  </ul>
+                  </div>
                   <Divider />
-                </>
+                </ListItem>
               )
             } )
           }
-        </ul>
+        </List>
       )
     } else { console.log( 'Erreur traitement statistiques' ) }
   }
 }
 
-
-
-
-        // TODO scripts: verifyConnexion(page2), initLang()
+// TODO scripts: verifyConnexion(page2), initLang()
