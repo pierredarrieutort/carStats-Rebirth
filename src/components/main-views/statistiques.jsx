@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { round, multiply } from 'mathjs'
 import { duration, unix } from 'moment'
 import { List, ListItem, ListItemText, Divider } from '@material-ui/core'
-import { Room as RoomIcon, Speed as SpeedIcon } from '@material-ui/icons'
+import { Room as RoomIcon, Speed as SpeedIcon, Timer as TimerIcon } from '@material-ui/icons'
 
 // import SignIn from '../login-views/signin'
 // import SignUp from '../login-views/signup'
@@ -132,7 +132,7 @@ export default class Statistiques extends Component {
                           </div>
                         </div>
                         <div className="durationStat">
-                          <img className="iconStat" src={require( '../../icons/duration.svg' )} alt="durée du trajet" />
+                          <TimerIcon />
                           <div className="valueStat">{duree}</div>
                         </div>
                       </div>
