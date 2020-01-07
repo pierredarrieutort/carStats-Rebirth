@@ -35,15 +35,16 @@ export default class Palmares extends Component {
 
 
     render() {
+        const { speedUnit, distanceUnit } = this.props.metrics
         return (
             <>
                 <div id='distances' className="palma">
                     <h2>Les plus longues distances</h2>
-                    <Treatment data={this.state.data.byDistance} />
+                    <Treatment data={this.state.data.byDistance} unit={distanceUnit} />
                 </div>
                 <div id='vitesses' className="palma">
                     <h2>Les plus grandes vitesses</h2>
-                    <Treatment data={this.state.data.bySpeed} />
+                    <Treatment data={this.state.data.bySpeed} unit={speedUnit} />
                 </div>
                 <div id='durees' className="palma">
                     <h2>Les plus longs trajets</h2>
@@ -56,11 +57,10 @@ export default class Palmares extends Component {
 
 
 function Treatment( props ) {
-
     return (
         <ul>
             {
-                props.data.map( ( el, index ) => { return <li key={index} >{el[0]} : {el[1]}</li> } )
+                props.data.map( ( el, index ) => { return <li key={index} >{el[0]} : {el[1]}{props.unit}</li> } )
             }
         </ul>
     )

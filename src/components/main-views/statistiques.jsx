@@ -99,7 +99,8 @@ export default class Statistiques extends Component {
                   startCity = el[5],
                   endCity = el[6],
                   departDate = el[7],
-                  departHour = el[8]
+                  departHour = el[8],
+                  { speedUnit, distanceUnit } = this.props.metrics
 
                 return (
                   <ListItem key={index}>
@@ -118,17 +119,17 @@ export default class Statistiques extends Component {
                       <div className="stats">
                         <div className="distanceStat">
                           <img className="iconStat" src={require( '../../icons/distance.svg' )} alt="distance parcourue" />
-                          <div className="valueStat">{distance}&nbsp;<span className="unitDistanceWrapper"></span>
+                <div className="valueStat">{distance}&nbsp;<span className="unitDistanceWrapper">{distanceUnit}</span>
                           </div>
                         </div>
                         <div className="avgStat">
                           <img className="iconStat" src={require( '../../icons/average_speed.svg' )} alt="vitesse moyenne" />
-                          <div className="valueStat">{avgSpeed}&nbsp;<span className="unitWrapper"></span>
+                          <div className="valueStat">{avgSpeed}&nbsp;<span className="unitWrapper">{speedUnit}</span>
                           </div>
                         </div>
                         <div className="maxStat">
                           <SpeedIcon />
-                          <div className="valueStat">{maxSpeed}&nbsp;<span className="unitWrapper"></span>
+                          <div className="valueStat">{maxSpeed}&nbsp;<span className="unitWrapper">{speedUnit}</span>
                           </div>
                         </div>
                         <div className="durationStat">

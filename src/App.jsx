@@ -12,7 +12,7 @@ export default class App extends Component {
     super( props )
 
     this.state = {
-      currentPage: '1'
+      currentPage: '2'
     }
   }
 
@@ -40,6 +40,8 @@ export default class App extends Component {
       appOpts = {
         speedCoef: metrics.kmh,
         distanceCoef: metrics.km,
+        speedUnit: metrics.kmhName,
+        distanceUnit: metrics.kmName
       }
 
 

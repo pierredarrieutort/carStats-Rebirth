@@ -6,6 +6,8 @@ body
     .page2
         background-color: #fff
         display: grid
+        .MuiSvgIcon-root
+            font-size: 1em
         i
             align-self: center
             text-align: center
@@ -16,7 +18,7 @@ body
                 padding: 0
                 .trajetWrap
                     display: grid
-                    grid-template-columns: 75% 25%
+                    grid-template-columns: 65% 35%
                     padding: .5em 16px
                     > div
                         padding: .5em 0
@@ -26,17 +28,16 @@ body
                             div:first-child
                                 margin-top: 0
                     .stats
-                        display: flex
-                        flex-direction: column
-                        justify-content: space-between
+                        display: grid
                         text-align: right
-                        justify-self: flex-end
                         white-space: nowrap
+                        grid-template-rows: repeat(4, 1fr)
                         > div
                             display: grid
                             grid-template-columns: repeat(2, 1fr)
+                            align-items: flex-end
                             > img
-                                width: 1.2em
+                                width: 1em
                 &:last-of-type
                     hr
                         display: none
