@@ -148,13 +148,7 @@ export default class Statistiques extends Component {
           </List>
         )
       } else { console.log( 'Erreur traitement statistiques' ) }
-    } else {
-      return (
-        <>
-          {this.state.data}
-        </>
-      )
-    }
+    } else { return <i> {this.state.data} </i> }
   }
 }
 
