@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { round, multiply } from 'mathjs'
 import { duration, unix } from 'moment'
-import { Container, ListItemText } from '@material-ui/core'
+import { List, ListItem, ListItemText, Divider } from '@material-ui/core'
 import { Room as RoomIcon, Speed as SpeedIcon } from '@material-ui/icons'
 
 // import SignIn from '../login-views/signin'
@@ -79,83 +79,76 @@ export default class Statistiques extends Component {
   }
 
   render() {
-    return (
-      <Treatment data={this.state.data} />
-    )
+    const divider = 9
+
+    if ( this.state.data.length % divider === 0 ) {
+      const travels = []
+      for ( let i = 0; i < this.state.data.length / divider; i++ ) {
+        travels.push( this.state.data.slice( i * divider, i * divider + divider ) )
+      }
+
+      return (
+        <ul>
+          {
+            travels.map( ( el, index ) => {
+              const
+                maxSpeed = el[0],
+                avgSpeed = el[1],
+                distance = el[2],
+                duree = el[3],
+                startCity = el[5],
+                endCity = el[6],
+                departDate = el[7],
+                departHour = el[8]
+
+              return (
+                <>
+                  <ul key={index} className="trajetWrap">
+                    <div className="infos">
+                      <div className="date">
+                        <ListItemText primary={departDate} secondary={departHour} />
+                      </div>
+                      <div className="cities">
+                        <div className="from">
+                          <RoomIcon /><span>&nbsp;De :&nbsp;</span>{startCity}</div>
+                        <div className="to">
+                          <RoomIcon /><span>&nbsp;À :&nbsp;</span>{endCity}</div>
+                      </div>
+                    </div>
+                    <div className="stats">
+                      <div className="distanceStat">
+                        <img className="iconStat" src={require( '../../icons/distance.svg' )} alt="distance parcourue" />
+                        <div className="valueStat">{distance}&nbsp;<span className="unitDistanceWrapper"></span>
+                        </div>
+                      </div>
+                      <div className="avgStat">
+                        <img className="iconStat" src={require( '../../icons/average_speed.svg' )} alt="vitesse moyenne" />
+                        <div className="valueStat">{avgSpeed}&nbsp;<span className="unitWrapper"></span>
+                        </div>
+                      </div>
+                      <div className="maxStat">
+                        <SpeedIcon />
+                        <div className="valueStat">{maxSpeed}&nbsp;<span className="unitWrapper"></span>
+                        </div>
+                      </div>
+                      <div className="durationStat">
+                        <img className="iconStat" src={require( '../../icons/duration.svg' )} alt="durée du trajet" />
+                        <div className="valueStat">{duree}</div>
+                      </div>
+                    </div>
+                  </ul>
+                  <Divider />
+                </>
+              )
+            } )
+          }
+        </ul>
+      )
+    } else { console.log( 'Erreur traitement statistiques' ) }
   }
 }
 
 
-function Treatment( props ) {
-
-  const divider = 9
-
-  if ( props.data.length % divider === 0 ) {
-    const travels = []
-    for ( let i = 0; i < props.data.length / divider; i++ ) {
-      travels.push( props.data.slice( i * divider, i * divider + divider ) )
-    }
-
-    return (
-      <>
-        {
-          travels.map( ( el, index ) => {
-            const
-              maxSpeed = el[0],
-              avgSpeed = el[1],
-              distance = el[2],
-              duree = el[3],
-              // depart = el[4],
-              startCity = el[5],
-              endCity = el[6],
-              departDate = el[7],
-              departHour = el[8]
-
-            return (
-              <Container key={index} className="trajetWrap">
-                <div className="infos">
-                  <div className="date">
-                    <ListItemText primary={departDate} secondary={departHour} />
-                  </div>
-                  <div className="cities">
-                    <div className="from">
-                      <RoomIcon /><span>&nbsp;De :&nbsp;</span>{startCity}</div>
-                    <div className="to">
-                      <RoomIcon /><span>&nbsp;À :&nbsp;</span>{endCity}</div>
-                  </div>
-                </div>
-                <div className="stats">
-                  <div className="distanceStat">
-                    <img className="iconStat" src={require('../../icons/distance.svg')} alt="distance parcourue" />
-                    <div className="valueStat">{distance}&nbsp;<span className="unitDistanceWrapper"></span>
-                    </div>
-                  </div>
-                  <div className="avgStat">
-                    <img className="iconStat" src={require('../../icons/average_speed.svg')} alt="vitesse moyenne" />
-                    <div className="valueStat">{avgSpeed}&nbsp;<span className="unitWrapper"></span>
-                    </div>
-                  </div>
-                  <div className="maxStat">
-                    <SpeedIcon />
-                    <div className="valueStat">{maxSpeed}&nbsp;<span className="unitWrapper"></span>
-                    </div>
-                  </div>
-                  <div className="durationStat">
-                    <img className="iconStat" src={require('../../icons/duration.svg')} alt="durée du trajet" />
-                    <div className="valueStat">{duree}</div>
-                  </div>
-                </div>
-              </Container>
-            )
-          } )
-        }
-      </>
-    )
-  } else { console.log( 'Erreur traitement statistiques' ) }
-}
 
 
-
-
-
-// TODO scripts: verifyConnexion(page2), initLang()
+        // TODO scripts: verifyConnexion(page2), initLang()
