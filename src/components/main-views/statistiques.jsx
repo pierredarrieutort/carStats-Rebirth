@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { round, multiply } from 'mathjs'
 import { duration, unix } from 'moment'
+import { Container, ListItemText } from '@material-ui/core'
+import { Room as RoomIcon, Speed as SpeedIcon } from '@material-ui/icons'
+
 // import SignIn from '../login-views/signin'
 // import SignUp from '../login-views/signup'
 // import Preconnect from '../login-views/preconnect'
@@ -64,29 +67,6 @@ export default class Statistiques extends Component {
               ]
             } )
 
-
-            // this.setState( {
-            //   data: this.state.data +
-            //     '<div class="trajetWrap_' + i + '">' +
-            //     '<div class="infos">' +
-            //     '<div class="date">' +
-            //     '<div class="jour">' + departDate + '</div>' +
-            //     '<div class="heure">' + departHour + '</div>' +
-            //     '</div>' +
-            //     '<div class="cities">' +
-            //     '<div class="from"><img class="iconCities" src="./images/map-pin.svg" alt="départ"><span>&nbsp;De :&nbsp;</span>' + startCity + '</div>' +
-            //     '<div class="to"><img class="iconCities" src="./images/map-pin.svg" alt="arrivée parcourue"><span>&nbsp;À :&nbsp;</span>' + endCity + '</div>' +
-            //     '</div>' +
-            //     '</div>' +
-            //     '<div class="stats">' +
-            //     '<div class="distanceStat"><img class="iconStat" src="./images/distance.svg" alt="distance parcourue"><div class="valueStat">' + distance + '&nbsp;<span class="unitDistanceWrapper"></span></div></div>' +
-            //     '<div class="avgStat"><img class="iconStat" src="./images/average_speed.svg" alt="vitesse moyenne"><div class="valueStat">' + avgSpeed + '&nbsp;<span class="unitWrapper"></span></div></div>' +
-            //     '<div class="maxStat"><img class="iconStat" src="./images/max_speed.svg" alt="vitesse maximale"><div class="valueStat">' + maxSpeed + '&nbsp;<span class="unitWrapper"></span></div></div>' +
-            //     '<div class="durationStat"><img class="iconStat" src="./images/duration.svg" alt="durée du trajet"><div class="valueStat">' + duree + '</div></div>' +
-            //     '</div>' +
-            //     '</div><br>'
-            // } )
-
             // if ( startCity == endCity || startCity == "" ) document.querySelector( '.trajetWrap_' + i + ' .from' ).style.opacity = 0
             // if ( endCity == "" ) document.querySelector( '.trajetWrap_' + i + ' .to' ).style.opacity = 0
           } )
@@ -117,7 +97,7 @@ function Treatment( props ) {
     }
 
     return (
-      <ul>
+      <>
         {
           travels.map( ( el, index ) => {
             const
@@ -125,52 +105,51 @@ function Treatment( props ) {
               avgSpeed = el[1],
               distance = el[2],
               duree = el[3],
-              depart = el[4],
+              // depart = el[4],
               startCity = el[5],
               endCity = el[6],
               departDate = el[7],
               departHour = el[8]
-            console.log( maxSpeed, avgSpeed, distance, duree, depart, startCity, endCity, departDate, departHour )
+
             return (
-              <>
-                <div key={index} class="trajetWrap">
-                  <div class="infos">
-                    <div class="date">
-                      <div class="jour">{departDate}</div>
-                      <div class="heure">{departHour}</div>
-                    </div>
-                    <div class="cities">
-                      <div class="from"><img class="iconCities" src="./images/map-pin.svg" alt="départ" /><span>&nbsp;De :&nbsp;</span>{startCity}</div>
-                      <div class="to"><img class="iconCities" src="./images/map-pin.svg" alt="arrivée parcourue" /><span>&nbsp;À :&nbsp;</span>{endCity}</div>
-                    </div>
+              <Container key={index} className="trajetWrap">
+                <div className="infos">
+                  <div className="date">
+                    <ListItemText primary={departDate} secondary={departHour} />
                   </div>
-                  <div class="stats">
-                    <div class="distanceStat">
-                      <img class="iconStat" src="./images/distance.svg" alt="distance parcourue" />
-                      <div class="valueStat">{distance}&nbsp;<span class="unitDistanceWrapper"></span>
-                      </div>
-                    </div>
-                    <div class="avgStat">
-                      <img class="iconStat" src="./images/average_speed.svg" alt="vitesse moyenne" />
-                      <div class="valueStat">{avgSpeed}&nbsp;<span class="unitWrapper"></span>
-                      </div>
-                    </div>
-                    <div class="maxStat">
-                      <img class="iconStat" src="./images/max_speed.svg" alt="vitesse maximale" />
-                      <div class="valueStat">{maxSpeed}&nbsp;<span class="unitWrapper"></span>
-                      </div>
-                    </div>
-                    <div class="durationStat">
-                      <img class="iconStat" src="./images/duration.svg" alt="durée du trajet" />
-                      <div class="valueStat">{duree}</div>
-                    </div>
+                  <div className="cities">
+                    <div className="from">
+                      <RoomIcon /><span>&nbsp;De :&nbsp;</span>{startCity}</div>
+                    <div className="to">
+                      <RoomIcon /><span>&nbsp;À :&nbsp;</span>{endCity}</div>
                   </div>
                 </div>
-              </>
+                <div className="stats">
+                  <div className="distanceStat">
+                    <img className="iconStat" src={require('../../icons/distance.svg')} alt="distance parcourue" />
+                    <div className="valueStat">{distance}&nbsp;<span className="unitDistanceWrapper"></span>
+                    </div>
+                  </div>
+                  <div className="avgStat">
+                    <img className="iconStat" src={require('../../icons/average_speed.svg')} alt="vitesse moyenne" />
+                    <div className="valueStat">{avgSpeed}&nbsp;<span className="unitWrapper"></span>
+                    </div>
+                  </div>
+                  <div className="maxStat">
+                    <SpeedIcon />
+                    <div className="valueStat">{maxSpeed}&nbsp;<span className="unitWrapper"></span>
+                    </div>
+                  </div>
+                  <div className="durationStat">
+                    <img className="iconStat" src={require('../../icons/duration.svg')} alt="durée du trajet" />
+                    <div className="valueStat">{duree}</div>
+                  </div>
+                </div>
+              </Container>
             )
           } )
         }
-      </ul>
+      </>
     )
   } else { console.log( 'Erreur traitement statistiques' ) }
 }
@@ -179,4 +158,4 @@ function Treatment( props ) {
 
 
 
-      // TODO scripts: verifyConnexion(page2), initLang()
+// TODO scripts: verifyConnexion(page2), initLang()
