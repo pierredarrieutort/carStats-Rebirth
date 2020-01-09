@@ -14,8 +14,7 @@ export default class Parametres extends Component {
         }
     }
 
-    handleToggle = el => { eval( `this.setState( { ${el}: !this.state.${el} } )` ) }
-    // handleToggle = el => { `this.setState( { ${el}: !this.state.${el} } ) }
+    handleToggle = el => { this.setState( { [el]: !this.state[el] } ) }
 
     render() {
         return (
